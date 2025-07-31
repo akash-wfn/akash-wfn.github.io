@@ -13,13 +13,13 @@ My goal is to understand and optimize modern "click" reactions using state-of-th
 ### My Approach
 My work is primarily computational, integrating expertise in quantum chemistry and using computers (Moleculator?). By leveraging a suite of powerful tools, we can move beyond trial-and-error and uncover the fundamental principles that govern reactivity. Key techniques I use include:
 
-* **Density Functional Theory (DFT)**: To model the electronic structure of molecules and predict their behavior (figure below: research theme 2).
+**Density Functional Theory (DFT)**: To model the electronic structure of molecules and predict their behavior (figure below: research theme 2).
 
-* **Energy Decomposition Analysis (EDA)**: To break down the forces of a chemical bond into understandable parts (like electrostatic and orbital interactions), revealing *why* a reaction is favorable.
+**Energy Decomposition Analysis (EDA)**: To break down the forces of a chemical bond into understandable parts (like electrostatic and orbital interactions), revealing *why* a reaction is favorable.
 
-* **Ab Initio Molecular Dynamics (AIMD)**: To simulate the real-time movement and interactions of atoms and molecules during a reaction.
+**Ab Initio Molecular Dynamics (AIMD)**: To simulate the real-time movement and interactions of atoms and molecules during a reaction.
 
-* **Machine Learning (ML)**: To analyze complex simulation data and build predictive models that accelerate the discovery of new and improved reactions.
+**Machine Learning (ML)**: To analyze complex simulation data and build predictive models that accelerate the discovery of new and improved reactions.
 
 ### Research Themes
 
