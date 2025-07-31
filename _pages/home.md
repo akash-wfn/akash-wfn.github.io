@@ -12,6 +12,7 @@ I am a PhD candidate at Wageningen University in the Netherlands, currently base
 
 This website serves to convey my research to the public in a simple and accessible way.
 
+<div class="text-center">
 <div markdown="0" id="carousel" class="carousel slide" data-ride="carousel" data-interval="4000" data-pause="hover">
     <ol class="carousel-indicators">
         <li data-target="#carousel" data-slide-to="0" class="active"></li>
