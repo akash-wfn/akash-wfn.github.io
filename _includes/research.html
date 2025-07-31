@@ -1,0 +1,11 @@
+<div class="research-theme">
+    {% if include.image_path %}
+    <div class="research-image {{ include.align }}">
+        <img src="{{ site.url }}{{ site.baseurl }}{{ include.image_path }}" alt="{{ include.title }}">
+    </div>
+    {% endif %}
+    <div class="research-text">
+        <h4>{{ include.title }}</h4>
+        <p>{{ include.text }}</p>
+    </div>
+</div>
