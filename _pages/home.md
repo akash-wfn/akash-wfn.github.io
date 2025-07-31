@@ -6,7 +6,8 @@ sitemap: false
 permalink: /
 ---
 
-Welcome to my personal website. I am a PhD candidate at Wageningen University in the Netherlands, currently based at Jiaxing University in China for a research collaboration. My work integrates organic chemistry, quantum chemistry, and computer science to optimize chemical reactions, with a particular focus on Click Reactions.
+Here, We Break Bonds Responsibly, triggering reactions with computational consent. 
+I am a PhD candidate at Wageningen University in the Netherlands, currently based at Jiaxing University in China for a research collaboration. My work integrates organic chemistry, quantum chemistry, and computer science to optimize chemical reactions, with a particular focus on Click Reactions.
 
 This website serves to convey my research to the public in a simple and accessible way.
 
