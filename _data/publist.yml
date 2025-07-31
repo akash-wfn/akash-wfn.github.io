@@ -7,7 +7,7 @@
     display: "J. Org. Chem. 2025"
   highlight: 1
 
-- title: "Substituent Effects on Sulfur-Phenolate Exchange Reactions: Reactivity and Bonding Analysis"
+- title: "Substituent and Solvent Effects on SuPhenEx Click Reactions"
   image: SuFEx-SuPhenEx-EDA.png
   description: "Can enthalpy alone explain reactivity in SuPhenEx reactions? By isolating enthalpic contributions, we show that in the gas phase, reactivity is driven by orbital interactions, tunable via electronic substituents. In polar solvents, enthalpic control shifts toward electrostatic stabilization, shaped by solvent-induced charge distributions. This deeper understanding offers a clear path to designing more efficient S(VI) substitution reactions."
   authors: "Akash Krishna, Pau Besalu, F.M. Bickelhaupt, Guanna Li, Han Zuilhof"
