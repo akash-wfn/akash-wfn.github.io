@@ -1,6 +1,6 @@
 - title: "Multimodal S(VI) Exchange Click Reactions Derived from SF2 Moieties: Comparative Kinetics and Stereochemistry of SuFEx and SuPhenEx Reactions"
   image: multimodal-sufex.png
-  description: "What really controls the rate of click reactions? For years, chemists have focused on lowering activation enthalpy (ΔH‡), assuming it’s the key. But what if that assumption is wrong? In a series of SuFEx and SuPhenEx reactions, we found that activation entropy (ΔS‡), not enthalpy, plays the dominant role. This challenges a long-standing belief. Enthalpy is well understood and predictable; entropy, much less so. Yet as we push for more efficient, sustainable chemistry, understanding disorder may be the real key."
+  description: "For years, chemists have focused on lowering activation enthalpy (ΔH‡) to control the rate of click reactions, but our study of SuFEx and SuPhenEx reactions reveals that activation entropy (ΔS‡) plays the dominant role. This challenges a long-held assumption and suggests that understanding molecular disorder may be the real key to designing more efficient and sustainable chemistry."
   authors: "Yumei Zhu, Akash Krishna, Yang Chao, Xixi Li, Sidharam P. Pujari, Guanna Li, Hong Huang, Hongxia Zhao, Jiajia Dong, Han Zuilhof"
   link:
     url: "https://pubs.acs.org/doi/10.1021/acs.joc.5c00615"
@@ -9,7 +9,7 @@
 
 - title: "Substituent and Solvent Effects on SuPhenEx Click Reactions"
   image: SuFEx-SuPhenEx-EDA.png
-  description: "Can enthalpy alone explain reactivity in SuPhenEx reactions? By isolating enthalpic contributions, we show that in the gas phase, reactivity is driven by orbital interactions, tunable via electronic substituents. In polar solvents, enthalpic control shifts toward electrostatic stabilization, shaped by solvent-induced charge distributions. This deeper understanding offers a clear path to designing more efficient S(VI) substitution reactions."
+  description: "Can enthalpy alone explain reactivity in SuPhenEx reactions? In the gas phase, it’s driven by orbital interactions modulated by substituents, while in polar solvents, electrostatic stabilization shaped by solvent-induced charge distributions takes over—offering a clearer path to designing more efficient S(VI) substitution reactions."
   authors: "Akash Krishna, Pau Besalu, F.M. Bickelhaupt, Guanna Li, Han Zuilhof"
   link:
     url: "submitted" 
@@ -18,7 +18,7 @@
 
 - title: "Ligand-Bound CO2 as a Nonclassical Route toward Efficient Photocatalytic CO2 Reduction with a Ni N-Confused Porphyrin"
   image: ligand-CO2.png
-  description: "Can ligands do more than just support the metal? We discovered that a Ni(II) N-confused porphyrin (NiNCP), featuring an acidic N–H group, achieves exceptional CO₂ reduction activity, with a TON of 217,000 and 98% selectivity for CO. Unlike its inactive parent complex (NiTPP), NiNCP operates through a nonclassical pathway where the ligand itself activates CO₂ via nucleophilic attack. This metal–ligand synergy reshapes how we think about catalyst design for small molecule activation."
+  description: "Can ligands do more than just support the metal? In Ni(II) N-confused porphyrin (NiNCP), the ligand’s acidic N–H enables a nonclassical pathway where it directly activates CO₂, achieving a TON of 217,000 with 98% CO selectivity—reshaping how we think about metal–ligand synergy in catalyst design."
   authors: "Huihong Yuan, Akash Krishna, Zhihe Wei, Yanhui Su, Jinzhou Chen, Wei Hua, Zhangyi Zheng, Daqi Song, Qiaoqiao Mu, Weiyi Pan, Long Xiao, Jin Yan, Guanna Li, Wenjun Yang, Zhao Deng, and Yang Peng"
   link:
     url: "https://pubs.acs.org/doi/abs/10.1021/jacs.3c14717" 
@@ -27,7 +27,7 @@
 
 - title: "Another Potential Click Reaction: SuPhenEx – A Computational Insight"
   image: Substituents_Eprofile.png
-  description: "What really drives bond formation in SuPhenEx reactions? While SuFEx has advanced click chemistry, it often depends on added reagents and tightly controlled conditions. To address this, we generalize S(VI) exchange through SuPhenEx, replacing nitrophenolate with a wide range of phenols ranging from EDG to EWG. Using DFT and Energy Decomposition Analysis (EDA), we go beyond total energy comparisons to uncover the fundamental interactions that drive reactivity. I had the opportunity to share this work with the chemistry world at IUPAC/CHAINS 2023 in The Hague, Netherlands."
+  description: "What really drives bond formation in SuPhenEx reactions? By generalizing S(VI) exchange across a broad range of phenols and using DFT with Energy Decomposition Analysis, we move beyond total energies to reveal the key interactions behind reactivity, a story I was excited to share at IUPAC/CHAINS 2023 in The Hague."
   authors: "A. Krishna, G. Li, H. Zuilhof"
   link:
     url: "https://library.wur.nl/WebQuery/edepot/647916" 
@@ -36,7 +36,7 @@
 
 - title: "Sulfur–Phenolate Exchange: SuFEx-Derived Dynamic Covalent Reactions and Degradation of SuFEx Polymers"
   image: Dynamic-SuphenEx.png
-  description: "What if click chemistry could be dynamic and enantiospecific? The SuPhenEx reaction, a sulfur(VI)–phenolate exchange, achieves just that. It proceeds within minutes at room temperature, is fast, enantiospecific, and shows broad functional group tolerance. It enables access to both sulfonimidate enantiomers from a single precursor and can bypass fluoride intermediates, avoiding issues like racemization and surface etching. By combining dynamic covalent behavior with click-like precision, SuPhenEx unlocks new possibilities for asymmetric synthesis and the design of stable yet degradable polymers."
+  description: "What if click chemistry could be both dynamic and enantiospecific? SuPhenEx—a fast, room-temperature S(VI)–phenolate exchange, achieves this with broad functional group tolerance, enabling access to both enantiomers from a single precursor while avoiding racemization and fluoride related issues, opening new paths in asymmetric synthesis and degradable polymer design"
   authors: "Yang Chao, Akash Krishna, Dr. Muthusamy Subramaniam, Dr. Dong-Dong Liang, Dr. Sidharam P. Pujari, Prof. Andrew C.-H. Sue, Dr. Guanna Li, Dr. Fedor M. Miloserdov, Prof. Dr. Han Zuilhof"
   link:
     url: "https://onlinelibrary.wiley.com/doi/10.1002/anie.202207456" 
