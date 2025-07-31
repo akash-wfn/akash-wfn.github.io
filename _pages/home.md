@@ -15,19 +15,19 @@ This website serves to convey my research to the public in a simple and accessib
         <li data-target="#carousel" data-slide-to="0" class="active"></li>
         <li data-target="#carousel" data-slide-to="1"></li>
         <li data-target="#carousel" data-slide-to="2"></li>
-    </ol>
+        </ol>
 
     <div class="carousel-inner" markdown="0">
         <div class="item active">
-            <img src="{{ site.url }}{{ site.baseurl }}/images/image1.jpg" alt="Slide 1" />
+            <img src="{{ site.url }}{{ site.baseurl }}/images/slider/image1.jpg" alt="Slide 1" />
         </div>
         <div class="item">
-            <img src="{{ site.url }}{{ site.baseurl }}/images/image2.jpg" alt="Slide 2" />
+            <img src="{{ site.url }}{{ site.baseurl }}/images/slider/image2.jpg" alt="Slide 2" />
         </div>
         <div class="item">
-            <img src="{{ site.url }}{{ site.baseurl }}/images/image3.jpg" alt="Slide 3" />
+            <img src="{{ site.url }}{{ site.baseurl }}/images/slider/image3.jpg" alt="Slide 3" />
         </div>
-    </div>
+        </div>
   <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
@@ -38,6 +38,6 @@ This website serves to convey my research to the public in a simple and accessib
   </a>
 </div>
 
-You can think of my focus, “Click Chemistry,” as working with molecular-sized LEGOs. The goal is to design two perfectly shaped molecular “bricks” that snap together easily and reliably. I use quantum chemical calculations as a kind of “virtual microscope” to see their shapes and how they interact. The machine learning models I develop help me optimize these reactions by analyzing atomic movements, bond formations, and energy profiles from quantum calculations. They learn what makes a connection strong and fast, guiding the design of even better molecular LEGOs.
+My job is like being a high-tech analyst for chemistry. I use powerful computer simulations to predict how invisible molecules will interact, helping scientists design better reactions—kind of like figuring out the best trick shot before even taking it. To make things even cooler, I train machine learning models that learn from these simulations so they can predict future outcomes even faster!
 
 **I am currently seeking new opportunities and collaborations. Please feel free to get in touch!**
