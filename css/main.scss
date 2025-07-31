@@ -95,3 +95,18 @@ firstp {
 .navbar-brand {
     font-size: 28px; /* You can adjust this value */
 }
+
+/* Homepage Content Alignment Fix */
+.home-content {
+    max-width: 900px; /* Sets a comfortable reading width */
+    margin: 0 auto; /* Centers the entire content block */
+}
+
+.home-content p {
+    text-align: justify; /* Ensures paragraph text is justified */
+}
+
+.home-content .carousel {
+    margin-left: 0; /* Resets the old carousel margins */
+    margin-right: 0;
+}

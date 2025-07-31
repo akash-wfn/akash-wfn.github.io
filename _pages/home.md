@@ -6,19 +6,20 @@ sitemap: false
 permalink: /
 ---
 
+<div class="home-content">
+
 Here, We form and break bonds responsibly, triggering reactions with computational consent. 
 
 I am a PhD candidate at Wageningen University in the Netherlands, currently based at Jiaxing University in China for a research collaboration. My work integrates organic chemistry, quantum chemistry, and computer science to optimize chemical reactions, with a particular focus on Click Reactions.
 
 This website serves to convey my research to the public in a simple and accessible way.
 
-<div class="text-center">
 <div markdown="0" id="carousel" class="carousel slide" data-ride="carousel" data-interval="4000" data-pause="hover">
     <ol class="carousel-indicators">
         <li data-target="#carousel" data-slide-to="0" class="active"></li>
         <li data-target="#carousel" data-slide-to="1"></li>
         <li data-target="#carousel" data-slide-to="2"></li>
-        </ol>
+    </ol>
 
     <div class="carousel-inner" markdown="0">
         <div class="item active">
@@ -30,7 +31,7 @@ This website serves to convey my research to the public in a simple and accessib
         <div class="item">
             <img src="{{ site.url }}{{ site.baseurl }}/images/slider/image3.jpg" alt="Slide 3" />
         </div>
-        </div>
+    </div>
   <a class="left carousel-control" href="#carousel" role="button" data-slide="prev">
     <span class="glyphicon glyphicon-chevron-left" aria-hidden="true"></span>
     <span class="sr-only">Previous</span>
@@ -44,3 +45,5 @@ This website serves to convey my research to the public in a simple and accessib
 My job is like being a high-tech analyst for chemistry. I use powerful computer simulations to predict how invisible molecules will interact, helping scientists design better reactions—kind of like figuring out the best trick shot before even taking it. To make things even cooler, I train machine learning models that learn from these simulations so they can predict future outcomes even faster!
 
 **I am currently seeking new opportunities and collaborations. Please feel free to get in touch!**
+
+</div> ```
