@@ -23,6 +23,7 @@ My work is primarily computational, integrating expertise in quantum chemistry a
 Here are some of the key themes I am currently focused on:
 
 **1. Expanding Click Chemistry with SuFEx and SuPhenEx**
+![]({{ site.url }}{{ site.baseurl }}/images/respic/click_chem.png){: style="width: 250px; float: left; margin: 0px  10px"}
 The Nobel Prize-winning concept of "click chemistry" has transformed how scientists build molecules. My work builds upon this foundation by exploring and expanding a powerful new variant: the Sulfur(VI) Phenolate Exchange (SuPhenEx) reaction. By replacing fluoride with a wide range of phenols, SuPhenEx offers a more versatile, synthetically appealing, and environmentally friendly approach to creating advanced materials and molecules.
 
 **2. Highlight: Dynamic, Fast, and Enantiospecific Reactions**
