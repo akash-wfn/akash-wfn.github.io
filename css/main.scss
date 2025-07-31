@@ -80,7 +80,6 @@ firstp {
 	padding-right: 26px;
 }
 
-
 /* Carusel */
 
 .carousel {
@@ -109,4 +108,49 @@ firstp {
 .home-content .carousel {
     margin-left: 0; /* Resets the old carousel margins */
     margin-right: 0;
+}
+
+/* --- New Research Theme Styling --- */
+.theme-item {
+    display: flex;
+    gap: 25px;
+    align-items: flex-start;
+    padding: 25px 0;
+    border-top: 1px solid #eee;
+}
+
+.theme-image {
+    flex-shrink: 0;
+    width: 33%;
+}
+
+.theme-image img {
+    width: 100%;
+    height: auto;
+    display: block;
+}
+
+.theme-text {
+    flex-grow: 1;
+}
+
+.theme-text h4 {
+    margin-top: 0;
+    font-size: 1.5em;
+}
+
+.theme-text p {
+    text-align: justify;
+    max-width: 100%;
+}
+
+/* On mobile, stack the image and text */
+@media (max-width: 768px) {
+    .theme-item {
+        flex-direction: column;
+    }
+    .theme-image {
+        width: 100%;
+        margin-bottom: 15px;
+    }
 }
