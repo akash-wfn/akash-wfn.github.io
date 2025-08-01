@@ -10,7 +10,7 @@ permalink: /
 
 Here, We form and break bonds responsibly, triggering reactions with computational consent. 
 
-I am a PhD candidate at Wageningen University in the Netherlands, currently based at Jiaxing University in China for a research collaboration. My work integrates organic chemistry, quantum chemistry, and computer science to optimize chemical reactions, with a particular focus on Click Reactions.
+I am a PhD candidate at Wageningen University in the Netherlands, currently based at Jiaxing University in China for a research collaboration. My research involves a multi-scale computational investigation into modern 'Click' reactions, with the goal of understanding the reactivity.
 
 This website serves to convey my research to the public in a simple and accessible way.
 
@@ -42,7 +42,9 @@ This website serves to convey my research to the public in a simple and accessib
   </a>
 </div>
 
-My job is like being a high-tech analyst for chemistry. I use powerful computer simulations to predict how invisible molecules will interact, helping scientists design better reactions—kind of like figuring out the best trick shot before even taking it. To make things even cooler, I train machine learning models that learn from these simulations so they can predict future outcomes even faster!
+You can think of my focus, “Click Chemistry,” as working with molecular-sized LEGOs. The goal is to design two molecular “bricks” that are perfectly shaped to snap together easily and reliably. My job is to figure out the absolute best shapes for these bricks and the ideal conditions to make them “click” together flawlessly.
+
+To achieve this, I use quantum chemical calculations as a “virtual microscope”, one powerful enough to see not just the precise shape of these molecular bricks but also how they move and interact. It’s like having a high-speed camera that records the “click” itself. The machine learning models I develop analyze these virtual videos to rapidly learn what makes a connection strong and fast, helping me design the next set of molecular LEGOs even more effectively.
 
 **I am currently seeking new opportunities and collaborations. Please feel free to get in touch!**
 
