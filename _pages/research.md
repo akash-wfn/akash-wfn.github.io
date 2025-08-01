@@ -1,6 +1,6 @@
 ---
 title: "Akash Krishna - Research"
-layout: textlay
+layout: research
 excerpt: "Research themes and approach of Akash Krishna."
 sitemap: false
 permalink: /research/
