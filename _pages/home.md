@@ -46,9 +46,10 @@ You can think of my focus, “Click Chemistry,” as working with molecular-size
 
 To achieve this, I use quantum chemical calculations as a “virtual microscope”, one powerful enough to see not just the precise shape of these molecular bricks but also how they move and interact. It’s like having a high-speed camera that records the “click” itself. The machine learning models I develop analyze these virtual videos to rapidly learn what makes a connection strong and fast, helping me design the next set of molecular LEGOs even more effectively.
 
-{% for item in site.data.featured %}
-  {% include featured_item.html item=item %}
-{% endfor %}
+<div class="text-center">
+  <div markdown="0" id="carousel" class="carousel slide" data-ride="carousel" data-interval="4000" data-pause="hover" >
+      </div>
+</div>
 
 **I am currently seeking new opportunities and collaborations. Please feel free to get in touch!**
 

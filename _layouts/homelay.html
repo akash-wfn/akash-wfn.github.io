@@ -2,11 +2,18 @@
 layout: default
 ---
 
-  <div id="homeid" class="col-sm-8">
+<div class="row">
+    <div id="homeid" class="col-sm-8">
         <h1>Welcome to my Wavefunction!</h1>
 
-	{{ content }}
-  </div>
-  <div id="newsid" class="col-sm-4" >
-	{% include news.html %}
-  </div>
+        {{ content }}
+
+        {% for item in site.data.featured %}
+          {% include featured_item.html item=item %}
+        {% endfor %}
+        
+    </div>
+    <div id="newsid" class="col-sm-4" >
+      {% include news.html %}
+    </div>
+</div>
