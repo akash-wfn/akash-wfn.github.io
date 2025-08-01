@@ -182,7 +182,7 @@ firstp {
     text-align: left; 
 }
 
-/* Justify text on pages using the 'textlay' layout */
+/* Force justify alignment on text-based pages */
 #textid p {
-    text-align: justify;
+    text-align: justify !important;
 }
