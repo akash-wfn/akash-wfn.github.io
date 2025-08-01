@@ -7,15 +7,6 @@
     display: "J. Org. Chem. 2025"
   highlight: 1
 
-- title: "Substituent and Solvent Effects on SuPhenEx Click Reactions"
-  image: SuFEx-SuPhenEx-EDA.png
-  description: "Can enthalpy alone explain reactivity in SuPhenEx reactions? In the gas phase, it’s driven by orbital interactions modulated by substituents, while in polar solvents, electrostatic stabilization shaped by solvent-induced charge distributions takes over—offering a clearer path to designing more efficient S(VI) substitution reactions."
-  authors: "Akash Krishna, Pau Besalu, F.M. Bickelhaupt, Guanna Li, Han Zuilhof"
-  link:
-    url: "submitted" 
-    display: "ChemEurJ 2025"
-  highlight: 1
-
 - title: "Ligand-Bound CO2 as a Nonclassical Route toward Efficient Photocatalytic CO2 Reduction with a Ni N-Confused Porphyrin"
   image: ligand-CO2.png
   description: "Can ligands do more than just support the metal? In Ni(II) N-confused porphyrin (NiNCP), the ligand’s acidic N–H enables a nonclassical pathway where it directly activates CO₂, achieving a TON of 217,000 with 98% CO selectivity—reshaping how we think about metal–ligand synergy in catalyst design."
