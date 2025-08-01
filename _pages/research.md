@@ -35,7 +35,6 @@ Here are some of the key themes I am currently focused on:
 
 <div class="row">
 <div class="col-sm-12 clearfix">
-<img src="{{ site.url }}{{ site.baseurl }}/images/respic/dft.png" class="img-responsive" width="33%" style="float: left; margin-right: 15px;" />
 <pubtit>2. Highlight: Dynamic, Fast, and Enantiospecific Reactions</pubtit>
 <p>What if click chemistry could be both dynamic and precisely controlled to produce a specific 3D structure (enantiomer)? Our work on the SuPhenEx reaction demonstrated that this is an easy fix. We found that the reaction is not only fast finishing in minutes at room temperature with high yields but is also enantiospecific. This allows for the creation of both enantiomers from a single starting material and can even bypass the need for fluorine chemistry altogether, avoiding issues like racemization. By combining the precision of click chemistry with dynamic covalent behavior, SuPhenEx opens new doors for asymmetric synthesis and the design of stable, yet degradable, polymers.</p>
 </div>
