@@ -182,7 +182,7 @@ firstp {
     text-align: left; 
 }
 
-/* Justify text on text-based pages like 'About' */
-.textlay p {
+/* Justify text on pages using the 'textlay' layout */
+#textid p {
     text-align: justify;
 }
