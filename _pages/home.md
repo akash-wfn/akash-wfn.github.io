@@ -53,4 +53,4 @@ To achieve this, I use quantum chemical calculations as a â€œvirtual microscopeâ
 
 **I am currently seeking new opportunities and collaborations. Please feel free to get in touch!**
 
-</div> ```
+</div>
