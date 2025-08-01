@@ -158,9 +158,9 @@ firstp {
 /* --- Featured Section Styling --- */
 .featured-section {
     max-width: 900px;
-    margin: 40px auto; /* Adds space above and below the section */
-    text-align: center;
-    border-top: 1px solid #eee; /* Adds a separator line */
+    margin: 40px auto; 
+    text-align: left; 
+    border-top: 1px solid #eee; 
     padding-top: 40px;
 }
 
@@ -179,5 +179,5 @@ firstp {
     font-size: 1em;
     color: #555;
     margin-top: 15px;
-    text-align: center;
+    text-align: left; 
 }
