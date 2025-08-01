@@ -181,3 +181,8 @@ firstp {
     margin-top: 15px;
     text-align: left; 
 }
+
+/* Justify text on text-based pages like 'About' */
+.textlay p {
+    text-align: justify;
+}
