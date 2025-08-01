@@ -46,6 +46,18 @@ You can think of my focus, “Click Chemistry,” as working with molecular-size
 
 To achieve this, I use quantum chemical calculations as a “virtual microscope”, one powerful enough to see not just the precise shape of these molecular bricks but also how they move and interact. It’s like having a high-speed camera that records the “click” itself. The machine learning models I develop analyze these virtual videos to rapidly learn what makes a connection strong and fast, helping me design the next set of molecular LEGOs even more effectively.
 
+<div class="featured-section">
+  <h2>Featured</h2>
+  <div class="featured-content">
+    <a href="your-link-to-the-conference-or-talk.html">
+        <img src="{{ site.url }}{{ site.baseurl }}/images/featured/IUPAC-talk.jpg" alt="Akash Krishna presenting at a IUPAC/CHAINS 2023 conference in the Netherlands" />
+    </a>
+    <p class="featured-caption">
+        Presenting my work on SuPhenEx Reactions at the <strong>IUPAC/CHAINS 2023</strong> conference in The Hague, Netherlands.
+    </p>
+  </div>
+</div>
+
 **I am currently seeking new opportunities and collaborations. Please feel free to get in touch!**
 
 </div> ```
