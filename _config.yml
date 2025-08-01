@@ -11,7 +11,7 @@ email: akash.krishna193@gmail.com
 description: > # this means to ignore newlines until "baseurl:"
   Website of the Akash Krishna
 baseurl: ""
-url: "https://akash-wfn.github.io"
+url: "https://akashkrishna.org"
 
 include:
   - .htaccess
