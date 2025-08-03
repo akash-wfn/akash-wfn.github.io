@@ -4,7 +4,7 @@ title: About
 permalink: /about/
 ---
 
-<img src="{{ site.url }}{{ site.baseurl }}/images/aboutpic/myself.jpg" alt="Akash Krishna" style="width: 250px; border-radius: 50%; display: block; margin: 0 auto 30px auto; box-shadow: 0 4px 8px rgba(0,0,0,0.1);">
+<img src="{{ site.url }}{{ site.baseurl }}/images/aboutpic/myself.jpg" alt="Akash Krishna" style="width: 250px; height: 250px; border-radius: 50%; display: block; margin: 0 auto 30px auto; object-fit: cover; box-shadow: 0 4px 8px rgba(0,0,0,0.1), 0 6px 20px rgba(0,0,0,0.1);">
 
 I completed my MSc in Chemistry at the Manipal Academy of Higher Education (India) in 2020. Following my master's, I gained further research experience first as a Research Internee and subsequently as a Research Assistant, deepening my expertise in advanced molecular sciences.
 
