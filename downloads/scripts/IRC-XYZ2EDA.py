@@ -4,7 +4,7 @@
 # calculations using the Amsterdam Modeling Suite (AMS) and PyFrag.
 #
 # Author: Akash Krishna
-# Date: August 2025
+# Date: June 2025
 
 import sys
 import os

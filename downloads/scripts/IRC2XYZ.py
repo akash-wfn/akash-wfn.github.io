@@ -5,7 +5,7 @@
 # single, multi-structure .xyz file.
 #
 # Author: Akash Krishna
-# Date: August 2025
+# Date: December 2023
 
 from __future__ import print_function
 import os.path, sys
