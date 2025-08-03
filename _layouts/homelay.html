@@ -1,19 +1,20 @@
 ---
 layout: default
 ---
+<div class="container-fluid">
+  <div class="row">
+      <div id="homeid" class="col-sm-8">
+          <h1>Welcome to my Wavefunction!</h1>
 
-<div class="row">
-    <div id="homeid" class="col-sm-8">
-        <h1>Welcome to my Wavefunction!</h1>
+          {{ content }}
 
-        {{ content }}
+          {% for item in site.data.featured %}
+            {% include featured_item.html item=item %}
+          {% endfor %}
 
-        {% for item in site.data.featured %}
-          {% include featured_item.html item=item %}
-        {% endfor %}
-        
-    </div>
-    <div id="newsid" class="col-sm-4" >
-      {% include news.html %}
-    </div>
+      </div>
+      <div id="newsid" class="col-sm-4" >
+        {% include news.html %}
+      </div>
+  </div>
 </div>
