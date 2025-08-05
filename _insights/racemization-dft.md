@@ -34,7 +34,7 @@ To understand how racemization occurs, I model **identity reactions**, where a p
 
 ### How I Set Up Identity Reactions in DFT:
 
-1. Use the **product structure** (e.g., phenolate `_p_-NO₂`) as the starting geometry.
+1. Use the **product structure** (e.g., `para-Nitro-phenolate`) as the starting geometry.
 2. Construct a **symmetric transition state**, where the leaving and entering phenolates are equidistant. Refer image 
 <a href="/images/insights/p-NO2_identity_rxn.jpg" target="_blank">
   <img src="/images/insights/p-NO2_identity_rxn.jpg" alt="Racemization TS" style="max-width: 100%; width: 200px; height: auto;" />
