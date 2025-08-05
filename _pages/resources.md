@@ -51,6 +51,14 @@ Here you can find a collection of computational scripts and guides that I have d
 
 ---
 
-## Software Guides
+## Insights
 
-*(Coming soon: In this section, I will share guides and tips for using various computational chemistry software packages.)*
+<ul class="insight-list">
+  {% for insight in site.insights %}
+    <li>
+      <a href="{{ site.url }}{{ site.baseurl }}{{ insight.url }}">{{ insight.title }}</a>
+    </li>
+  {% endfor %}
+</ul>
+
+---

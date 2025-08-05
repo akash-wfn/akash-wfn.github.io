@@ -11,5 +11,5 @@ permalink: /allnews.html
 Here you can find a complete archive of my news, achievements, and career updates.
 
 {% for article in site.data.news %}
-<p>{{ article.date }} <br> {{ article.headline | markdownify}}</p>
+<p><strong>{{ article.date }}</strong> <br> {{ article.headline }}</p>
 {% endfor %}
