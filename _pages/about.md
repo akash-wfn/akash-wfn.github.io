@@ -10,8 +10,9 @@ I completed my MSc in Chemistry at the Manipal Academy of Higher Education (Indi
 
 Currently, I am a PhD candidate at Wageningen University & Research (Netherlands), conducting a research collaboration based at Jiaxing University (China). My doctoral research integrates organic chemistry, quantum chemistry, and computer science to understand and optimize modern "click" reactions, with a particular focus on **Sulfur Flourine exchange (SuFEx)** and **Sulfur Phenolate Exchange (SuPhenEx)** chemistries. By leveraging a suite of Advanced computational tools, including Density Functional Theory (DFT), Energy Decomposition Analysis (EDA), Ab Initio Molecular Dynamics (AIMD), and Machine Learning (ML), my work aims to uncover the fundamental principles that govern chemical reactivity.
 
-The ultimate goal of my research is to design more efficient, sustainable, and precisely controllable reactions for applications in drug discovery, materials science and chemical biology.
+The ultimate goal of my research is to design more efficient, sustainable, and precisely controllable reactions for applications in drug discovery, materials science and chemical biology. 
 
+---
 "A true act is not when you fix yourself, but when you act despite the brokenness."
 ---
 You can find more details on my work on the [Research page](/research/) and a full list of my work on the [Publications page](/publications/).
