@@ -12,5 +12,6 @@ Currently, I am a PhD candidate at Wageningen University & Research (Netherlands
 
 The ultimate goal of my research is to design more efficient, sustainable, and precisely controllable reactions for applications in drug discovery, materials science and chemical biology.
 
+"A true act is not when you fix yourself, but when you act despite the brokenness."
 ---
 You can find more details on my work on the [Research page](/research/) and a full list of my work on the [Publications page](/publications/).
