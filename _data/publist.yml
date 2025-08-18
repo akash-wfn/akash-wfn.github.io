@@ -1,3 +1,12 @@
+- title: Substituent Effects on Sulfur Phenolate Exchange Reactions: Reactivity and Bonding Analysis
+  image: SuFEx-SuPhenEx-EDA.png
+  description: "Can enthalpy alone explain reactivity in SuPhenEx reactions? By isolating enthalpic contributions, we show that in the gas phase, reactivity is driven by orbital interactions, tunable via electronic substituents. In polar solvents, enthalpic control shifts toward electrostatic stabilization, shaped by solvent-induced charge distributions. This deeper understanding offers a clear path to designing more efficient S(VI) substitution reactions"
+  authors: "Akash Krishna, Pau Besalu, F. Matthias Bickelhaupt, Guanna Li, and Han Zuilhof"
+  link: 
+    url: "Submitted"
+    display: "EurChemJ 2025"
+  highlight: 1
+
 - title: "Multimodal S(VI) Exchange Click Reactions Derived from SF2 Moieties: Comparative Kinetics and Stereochemistry of SuFEx and SuPhenEx Reactions"
   image: multimodal-sufex.png
   description: "For years, chemists have focused on lowering activation enthalpy (ΔH‡) to control the rate of click reactions, but our study of SuFEx and SuPhenEx reactions reveals that activation entropy (ΔS‡) plays the dominant role. This challenges a long-held assumption and suggests that understanding molecular disorder may be the real key to designing more efficient and sustainable chemistry."
