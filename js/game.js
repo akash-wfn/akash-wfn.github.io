@@ -1,5 +1,4 @@
 document.addEventListener('DOMContentLoaded', () => {
-  // Password gate
   const pwScreen  = document.getElementById('password-screen');
   const forestGame= document.getElementById('forest-game');
   const unlockBtn = document.getElementById('unlock-btn');
@@ -22,7 +21,7 @@ function startForestGame() {
   const canvas = document.getElementById('gameCanvas');
   const ctx = canvas.getContext('2d', { alpha: false });
 
-  // Modals
+  // ======= MODALS (use .ak-modal to avoid Bootstrap conflicts) =======
   const backdrop    = document.getElementById('modal-backdrop');
   const winModal    = document.getElementById('question-modal');
   const retryModal  = document.getElementById('retry-modal');
@@ -31,41 +30,46 @@ function startForestGame() {
   const noBtn       = document.getElementById('noBtn');
   const retryBtn    = document.getElementById('retryBtn');
 
+  function lockBody(lock) {
+    document.documentElement.style.overflow = lock ? 'hidden' : '';
+    document.body.style.overflow = lock ? 'hidden' : '';
+  }
   function hideAllOverlays() {
     winModal.classList.remove('show');
     retryModal.classList.remove('show');
     dinnerModal.classList.remove('show');
     backdrop.style.display = 'none';
-    document.body.classList.remove('modal-open');
+    lockBody(false);
+  }
+  function showCentered(modalEl) {
+    window.scrollTo(0,0);
+    lockBody(true);
+    backdrop.style.display = 'block';
+    modalEl.classList.add('show');
   }
   function showWinOverlay() {
     hideAllOverlays();
-    backdrop.style.display = 'block';
-    winModal.classList.add('show');
-    document.body.classList.add('modal-open');
-
+    showCentered(winModal);
     yesBtn.onclick = () => {
       winModal.classList.remove('show');
-      dinnerModal.classList.add('show'); // keep backdrop
+      showCentered(dinnerModal); // keep backdrop + lock
     };
     noBtn.onmouseenter = () => {
       const card = winModal.querySelector('.card');
       const maxX = Math.max(0, card.clientWidth - 100);
       const maxY = Math.max(0, card.clientHeight - 60);
       noBtn.style.position = 'relative';
-      noBtn.style.left = Math.floor(Math.random()*maxX) + 'px';
-      noBtn.style.top  = Math.floor(Math.random()*maxY) + 'px';
+      noBtn.style.left = Math.floor(Math.random() * maxX) + 'px';
+      noBtn.style.top  = Math.floor(Math.random() * maxY) + 'px';
     };
   }
   function showRetryOverlay() {
     hideAllOverlays();
-    backdrop.style.display = 'block';
-    retryModal.classList.add('show');
-    document.body.classList.add('modal-open');
+    showCentered(retryModal);
     retryBtn.onclick = resetGame;
   }
 
-  // Canvas sizing
+  // ======= Canvas sizing =======
   function sizeCanvas() {
     const wrap = document.getElementById('forest-game');
     const cssW = Math.min(720, wrap.clientWidth || window.innerWidth - 24);
@@ -82,35 +86,35 @@ function startForestGame() {
 
   const groundY = () => canvas.clientHeight - 56;
 
-  // Device tuning
-  const touchDevice = matchMedia('(hover: none)').matches;
-  const speedScaleBase = touchDevice ? 0.85 : 1.0; // slower on phones
+  // ======= Mobile tuning =======
+  const isMobile   = /Mobi|Android/i.test(navigator.userAgent);
+  const speedScale = isMobile ? 0.8 : 1.0;
+  const grav       = 0.45 * speedScale;
+  const jumpV      = -9.0 * speedScale;
+  const obsSpeed   = 2.6 * speedScale;
+  const heartSpeed = 2.5 * speedScale;
 
-  // Entities
-  const anu = { x: 60, y: groundY(), w: 24, h: 24, vx: 0, vy: 0, speed: 4, onGround: true };
+  // ======= Entities =======
+  const anu = { x: 60, y: groundY(), w: 24, h: 24, vx: 0, vy: 0, speed: 3.6*speedScale, onGround: true };
 
-  // Akash turret: middle-left
+  // Akash at middle-left
   const turret = {
-    x: () => 46,                               // a bit in from the left
-    y: () => Math.round(canvas.clientHeight * 0.55), // middle-left vertically
+    x: () => Math.round(canvas.clientWidth * 0.1),
+    y: () => Math.round(canvas.clientHeight * 0.55),
     cooldown: 0,
-    COOLDOWN_MAX: 70,
-    RANGE_X: () => canvas.clientWidth * 0.9
+    COOLDOWN_MAX: Math.round(70 / speedScale),
+    RANGE_X: () => canvas.clientWidth * 0.85
   };
+  const projectiles = []; // {x,y,vx,vy,ttl,guaranteed,aimId,beamT,beamToX,beamToY}
 
-  const projectiles = []; // {x,y,vx,vy,ttl,guaranteed,aimId,trail:[]}
   const trees = [];
-  const obstacles = [];   // {x,y,kind,w,h,id}
-  const hearts = [];      // {x,y,w,h,linkedId?}
+  const obstacles = [];
+  const hearts = [];
 
-  let score = 0;
-  let running = true;
-  let t = 0;
-  let hitCount = 0;
-  let obsIdSeq = 1;
+  let score = 0, running = true, t = 0, hitCount = 0, obsIdSeq = 1;
 
-  // Controls
-  let left=false, right=false, up=false, jumpTapCooldown=0;
+  // ======= Controls =======
+  let left=false, right=false, up=false;
   document.addEventListener('keydown', e => {
     if (e.key === 'ArrowLeft')  left = true;
     if (e.key === 'ArrowRight') right = true;
@@ -121,55 +125,53 @@ function startForestGame() {
     if (e.key === 'ArrowRight') right = false;
     if (e.key === 'ArrowUp' || e.code === 'Space') up = false;
   });
+  canvas.addEventListener('touchstart', () => { up = true; setTimeout(() => up = false, 120); });
 
-  // Mobile: canvas tap still works
-  canvas.addEventListener('touchstart', () => { triggerJump(); });
-
-  // Mobile: dedicated jump button
-  const jumpBtn = document.getElementById('jumpBtn');
-  if (jumpBtn) {
-    jumpBtn.addEventListener('click', () => { triggerJump(); });
-    jumpBtn.addEventListener('touchstart', (e) => { e.preventDefault(); triggerJump(); }, { passive:false });
+  // On-screen jump button for mobile
+  if (isMobile) {
+    const btn = document.createElement('button');
+    btn.textContent = 'Jump ⤴';
+    Object.assign(btn.style, {
+      position: 'fixed', right: '16px', bottom: '16px', zIndex: '3500',
+      padding: '12px 16px', borderRadius: '14px', border: '0',
+      background: '#ff6fb1', color: '#fff', fontSize: '16px', boxShadow: '0 6px 16px rgba(0,0,0,.25)'
+    });
+    document.body.appendChild(btn);
+    const tap = ()=>{ up = true; setTimeout(()=> up = false, 120); };
+    btn.addEventListener('touchstart', tap);
+    btn.addEventListener('click', tap);
   }
-  function triggerJump(){
-    if (jumpTapCooldown>0) return;
-    up = true;
-    setTimeout(()=>{ up=false; }, 120);
-    jumpTapCooldown = 8; // a few frames cooldown to avoid multi-trigger
-  }
 
-  // Spawners
+  // ======= Spawners =======
   const spawnTree = () => trees.push({
     x: canvas.clientWidth + 40,
-    y: Math.random()*(groundY()-60)+20,
-    emo: Math.random()<0.75?'🌲':'🌳',
-    spd: 1+Math.random()*1.4
+    y: Math.random() * (groundY() - 60) + 20,
+    emo: Math.random() < 0.75 ? '🌲' : '🌳',
+    spd: 0.9*speedScale + Math.random() * 1.2*speedScale
   });
 
   function spawnObstacleWithHeart() {
     const id = obsIdSeq++;
-    const o = { x: canvas.clientWidth + 30, y: groundY(), kind: Math.random()<0.5?'tiger':'snake', w: 22, h: 22, id };
+    const o = { x: canvas.clientWidth + 30, y: groundY(), kind: Math.random() < 0.5 ? 'tiger' : 'snake', w: 22, h: 22, id };
     obstacles.push(o);
-    if (Math.random() < 0.8) {
+    if (Math.random() < 0.85) {
       hearts.push({
-        x: o.x + 10,
-        y: groundY() - (55 + Math.random()*10),
-        w: 18, h: 18,
-        linkedId: id
+        x: o.x + 12,
+        y: groundY() - (52 + Math.random() * 12),
+        w: 18, h: 18, linkedId: id
       });
     }
   }
   const spawnBonusHeart = () => hearts.push({
     x: canvas.clientWidth + 20,
-    y: groundY() - (48 + Math.random()*18),
+    y: groundY() - (46 + Math.random() * 18),
     w: 18, h: 18
   });
 
-  // Helpers
-  const emoji = (txt,x,y,size=28)=>{ ctx.font = `${size}px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",system-ui,sans-serif`; ctx.fillText(txt,x,y); };
-  const aabb = (ax,ay,aw,ah,bx,by,bw,bh)=> ax<bx+bw && ax+aw>bx && ay<by+bh && ay+ah>by;
+  // ======= Draw helpers =======
+  const emoji = (txt, x, y, size = 28) => { ctx.font = `${size}px "Apple Color Emoji","Segoe UI Emoji","Noto Color Emoji",system-ui,sans-serif`; ctx.fillText(txt, x, y); };
+  const aabb  = (ax,ay,aw,ah,bx,by,bw,bh) => ax<bx+bw && ax+aw>bx && ay<by+bh && ay+ah>by;
 
-  // Drawing
   function drawBackground(){
     const grad = ctx.createLinearGradient(0,0,0,canvas.clientHeight);
     grad.addColorStop(0,   '#9be7ff');
@@ -177,10 +179,8 @@ function startForestGame() {
     grad.addColorStop(1,   '#7bd86f');
     ctx.fillStyle = grad;
     ctx.fillRect(0,0,canvas.clientWidth,canvas.clientHeight);
-
     ctx.fillStyle = '#4caf50';
     ctx.fillRect(0, groundY()+24, canvas.clientWidth, 4);
-
     trees.forEach(tr => emoji(tr.emo, tr.x, tr.y, 28));
   }
 
@@ -196,55 +196,52 @@ function startForestGame() {
     ctx.shadowOffsetX = 0;
     ctx.shadowOffsetY = 1;
 
-    // Akash
-    const ax = turret.x() + 12;
-    const ay = turret.y() - 8;
+    const ax = turret.x() + 12, ay = turret.y() - 8;
     ctx.strokeStyle = '#000'; ctx.strokeText('Akash', ax, ay);
-    ctx.fillStyle = '#fff';   ctx.fillText('Akash', ax, ay);
+    ctx.fillStyle   = '#fff'; ctx.fillText('Akash', ax, ay);
 
-    // Anu
-    const px = anu.x + 12;
-    const py = anu.y - 28;
+    const px = anu.x + 12, py = anu.y - 28;
     ctx.strokeStyle = '#000'; ctx.strokeText('Anu', px, py);
-    ctx.fillStyle = '#fff';   ctx.fillText('Anu', px, py);
-
+    ctx.fillStyle   = '#fff'; ctx.fillText('Anu', px, py);
     ctx.restore();
   }
 
-  const drawAnu        = ()=> emoji('👩🏻', anu.x, anu.y, 30);
-  const drawTurret     = ()=> emoji('👨🏻', turret.x(), turret.y(), 30);
-  const drawHearts     = ()=> hearts.forEach(h=> emoji('💖', h.x, h.y, 22));
-  const drawObstacles  = ()=> obstacles.forEach(o=> emoji(o.kind==='tiger'?'🐯':'🐍', o.x, o.y, 28));
+  const drawAnu       = () => emoji('👩🏻', anu.x, anu.y, 30);
+  const drawTurret    = () => emoji('👨🏻', turret.x(), turret.y(), 26);
+  const drawHearts    = () => hearts.forEach(h => emoji('💖', h.x, h.y, 22));
+  const drawObstacles = () => obstacles.forEach(o => emoji(o.kind === 'tiger' ? '🐯' : '🐍', o.x, o.y, 28));
 
-  // Bright, visible projectiles with glow + short trail
-  function drawProjectile(p){
-    // trail
-    if (!p.trail) p.trail = [];
-    p.trail.push({x:p.x, y:p.y});
-    if (p.trail.length>6) p.trail.shift();
-    ctx.save();
-    ctx.lineWidth = 2.5;
-    ctx.lineCap = 'round';
-    for (let i=1; i<p.trail.length; i++){
-      const a = p.trail[i-1], b = p.trail[i];
-      ctx.strokeStyle = `rgba(255,235,59,${i/p.trail.length})`; // yellow fade
-      ctx.beginPath(); ctx.moveTo(a.x, a.y); ctx.lineTo(b.x, b.y); ctx.stroke();
+  // Super-visible beam + orb
+  function drawProjectile(p) {
+    if (p.beamT > 0) {
+      ctx.save();
+      ctx.globalCompositeOperation = 'lighter';
+      ctx.lineWidth = 5;
+      ctx.shadowColor = '#ffd400';
+      ctx.shadowBlur = 12;
+      ctx.strokeStyle = '#ffe600'; // bright yellow
+      ctx.beginPath();
+      ctx.moveTo(turret.x()+12, turret.y()-6);
+      ctx.lineTo(p.beamToX, p.beamToY-12);
+      ctx.stroke();
+      ctx.restore();
+      p.beamT--;
     }
-    // head
-    ctx.shadowColor = '#ffeb3b';
-    ctx.shadowBlur = 12;
-    ctx.fillStyle = '#ffeb3b';
-    ctx.beginPath(); ctx.arc(p.x, p.y, 4.5, 0, Math.PI*2); ctx.fill();
+    ctx.save();
+    ctx.globalCompositeOperation = 'lighter';
+    ctx.fillStyle = '#ff2d6f';
+    ctx.shadowColor = '#ff7ab3';
+    ctx.shadowBlur = 8;
+    ctx.beginPath();
+    ctx.arc(p.x, p.y, 5.2, 0, Math.PI*2);
+    ctx.fill();
     ctx.restore();
   }
 
-  // Turret
   function turretShoot() {
     if (turret.cooldown > 0) { turret.cooldown--; return; }
-
     let target = null, bestDx = Infinity;
-    const tx = turret.x();
-    const ty = turret.y();
+    const tx = turret.x(), ty = turret.y();
     obstacles.forEach(o => {
       const dx = o.x - tx;
       if (dx > 20 && dx < turret.RANGE_X() && dx < bestDx) { bestDx = dx; target = o; }
@@ -252,117 +249,87 @@ function startForestGame() {
     if (!target) return;
 
     turret.cooldown = turret.COOLDOWN_MAX;
-
-    const dx = (target.x) - tx;
-    const dy = (target.y - 10) - ty;
+    const dx = (target.x) - tx, dy = (target.y - 10) - ty;
     const len = Math.max(1, Math.hypot(dx, dy));
-    const speed = 7.2;
-
+    const speed = 6.5 * speedScale;
     const guaranteed = hitCount < 2 ? true : Math.random() < 0.7;
 
     projectiles.push({
-      x: tx + 16, y: ty - 4,                  // offset a bit so it looks like firing
+      x: tx + 12, y: ty,
       vx: (dx/len) * speed,
       vy: (dy/len) * speed,
-      ttl: 100,
+      ttl: Math.round(100 / speedScale),
       guaranteed,
       aimId: target.id,
-      trail: []
+      beamT: 10,
+      beamToX: target.x,
+      beamToY: target.y
     });
   }
 
-  function updateProjectiles(dt) {
+  function updateProjectiles() {
     for (let i = projectiles.length - 1; i >= 0; i--) {
       const p = projectiles[i];
-      p.x += p.vx * dt; p.y += p.vy * dt; p.ttl -= dt;
+      p.x += p.vx; p.y += p.vy; p.ttl--;
       drawProjectile(p);
-
-      // collide with obstacles
       for (let j = obstacles.length - 1; j >= 0; j--) {
         const o = obstacles[j];
-        if (aabb(p.x-4, p.y-4, 8, 8, o.x, o.y-22, o.w, o.h)) {
+        if (aabb(p.x-6, p.y-6, 12, 12, o.x, o.y-22, o.w, o.h)) {
           const remove = p.guaranteed || p.aimId === o.id || Math.random() < 0.5;
           if (remove) { obstacles.splice(j,1); hitCount++; }
           projectiles.splice(i,1);
           break;
         }
       }
-      if (p.ttl <= 0 || p.x > canvas.clientWidth+12 || p.y < -12 || p.y > canvas.clientHeight+12) {
+      if (p.ttl <= 0 || p.x > canvas.clientWidth+10 || p.y < -10 || p.y > canvas.clientHeight+10) {
         projectiles.splice(i,1);
       }
     }
   }
 
-  // Game flow
   function resetGame() {
-    obstacles.length = 0;
-    hearts.length = 0;
-    trees.length = 0;
-    projectiles.length = 0;
+    obstacles.length = hearts.length = trees.length = projectiles.length = 0;
     score = 0; hitCount = 0; t = 0; obsIdSeq = 1;
     anu.x = 60; anu.y = groundY(); anu.vx = 0; anu.vy = 0; anu.onGround = true;
     turret.cooldown = 0;
     running = true;
     hideAllOverlays();
-    lastTime = undefined; // reset timer
     requestAnimationFrame(tick);
   }
 
-  // Time-based loop (smooth on mobile/desktop)
-  let lastTime;
-  function tick(now) {
+  function tick() {
     if (!running) return;
-    if (jumpTapCooldown>0) jumpTapCooldown--;
-
-    // dt as multiple of 60fps frames
-    if (lastTime === undefined) lastTime = now;
-    let dt = (now - lastTime) / 16.6667; // 1 = ~60fps frame
-    dt = Math.min(Math.max(dt, 0.5), 2.0); // clamp to avoid spikes
-    const S = dt * speedScaleBase;
-    lastTime = now;
-    t += dt;
-
+    t++;
     ctx.clearRect(0,0,canvas.clientWidth,canvas.clientHeight);
 
-    // Parallax forest
-    if (Math.floor(t) % 30 === 0 && trees.length < 25) spawnTree();
-    trees.forEach(tr => tr.x -= tr.spd * 0.9 * S);
+    if (t % 30 === 0) spawnTree();
+    trees.forEach(tr => tr.x -= tr.spd);
     while (trees.length && trees[0].x < -40) trees.shift();
 
-    // Controls + physics
     anu.vx = (right ? anu.speed : 0) + (left ? -anu.speed : 0);
-    if (up && anu.onGround) { anu.vy = -9.5; anu.onGround = false; }
-    anu.x += anu.vx * S;
-    anu.vy += 0.5 * S;                   // gravity
-    anu.y += clamp(anu.vy, -20, 20) * S;
+    if (up && anu.onGround) { anu.vy = jumpV; anu.onGround = false; }
+    anu.x += anu.vx;
+    anu.vy += grav;
+    anu.y += clamp(anu.vy, -20, 20);
     if (anu.y > groundY()) { anu.y = groundY(); anu.vy = 0; anu.onGround = true; }
-    anu.x = Math.max(8, Math.min(canvas.clientWidth-40, anu.x));
+    anu.x = Math.max(8, Math.min(canvas.clientWidth - 40, anu.x));
 
-    // Spawns
-    if (Math.floor(t) % 85 === 0)  spawnObstacleWithHeart();
-    if (Math.floor(t) % 220 === 0) spawnBonusHeart();
+    if (t % Math.round(85/ speedScale) === 0)  spawnObstacleWithHeart();
+    if (t % Math.round(220/speedScale) === 0) spawnBonusHeart();
 
-    // Move world
-    const obsSpeed = 3.1 * (touchDevice ? 0.85 : 1.0);
-    const heartSpeed = 3.0 * (touchDevice ? 0.85 : 1.0);
-    obstacles.forEach(o => o.x -= obsSpeed * S);
-    hearts.forEach(h => h.x -= heartSpeed * S);
+    obstacles.forEach(o => o.x -= obsSpeed);
+    hearts.forEach(h => h.x -= heartSpeed);
     while (obstacles.length && obstacles[0].x < -40) obstacles.shift();
     while (hearts.length && hearts[0].x < -30) hearts.shift();
 
-    // Turret + projectiles
     turretShoot();
-    updateProjectiles(S);
+    updateProjectiles();
 
-    // Collect hearts
     for (let i = hearts.length - 1; i >= 0; i--) {
       const h = hearts[i];
-      if (aabb(anu.x, anu.y-20, 20, 20, h.x, h.y-18, h.w, h.h)) {
-        score++; hearts.splice(i,1);
-      }
+      if (aabb(anu.x, anu.y-20, 20, 20, h.x, h.y-18, h.w, h.h)) { score++; hearts.splice(i,1); }
     }
 
-    // Collision with animals
     let hit = false;
     for (let i = 0; i < obstacles.length; i++) {
       const o = obstacles[i];
@@ -370,11 +337,8 @@ function startForestGame() {
     }
     if (hit) { running = false; showRetryOverlay(); return; }
 
-    // Win condition
-    if (running && (score >= 6 || t > 90 * 12)) {
-      running = false;
-      showWinOverlay();
-      return;
+    if (running && (score >= 6 || t > Math.round(90 * 12 / speedScale))) {
+      running = false; showWinOverlay(); return;
     }
 
     // Render
@@ -385,7 +349,6 @@ function startForestGame() {
     drawAnu();
     drawLabels();
 
-    // HUD
     ctx.fillStyle = '#fff';
     ctx.strokeStyle = '#000';
     ctx.lineWidth = 3;
