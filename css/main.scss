@@ -313,3 +313,8 @@ firstp {
     .overlay { padding: 14px; }
     .btn-row { gap: 8px; }
   }
+
+  .navbar-nav li a[href$="/game"] {
+    font-weight: bold;
+    color: #c35206 !important;  /* pink highlight */
+  }

@@ -1,0 +1,87 @@
+---
+layout: default
+title: "Anu & Akash Forest Game"
+permalink: /game/
+---
+
+<!-- Minimal inline styles so modals pop even without editing main.scss -->
+<style>
+  .game-block{max-width:720px;margin:1.5rem auto;text-align:center}
+  #gameCanvas{width:100%;max-width:720px;aspect-ratio:18/10;border-radius:10px;border:2px solid #2e2e2e;display:block;margin:0 auto;background:linear-gradient(#9be7ff 0%, #bde9a4 40%, #7bd86f 100%)}
+
+  /* Modal system */
+  #modal-backdrop{position:fixed;inset:0;background:rgba(0,0,0,.45);z-index:999;display:none}
+  .modal{position:fixed;inset:0;display:none;align-items:center;justify-content:center;padding:16px;z-index:1000}
+  .modal.show{display:flex}
+  .modal .card{background:#fff;color:#222;border:1px solid #e6e6e6;border-radius:14px;padding:18px 20px;max-width:520px;width:min(92vw,520px);box-shadow:0 10px 30px rgba(0,0,0,.2);text-align:center}
+  .btn-row{display:flex;gap:12px;justify-content:center;margin-top:10px}
+  .primary{background:#ff6fb1;color:#fff;border:0;padding:10px 16px;border-radius:10px;cursor:pointer;font-size:16px}
+  .ghost{background:#f3f3f3;border:1px solid #d6d6d6;padding:10px 16px;border-radius:10px;cursor:pointer;font-size:16px}
+
+  /* Dinner scene layout: Akash slightly lower, middle-left */
+  .dinner-scene{font-size:clamp(24px,4vw,36px);line-height:1.4}
+  .dinner-row{display:grid;grid-template-columns:1.2fr auto 0.8fr;align-items:end;gap:clamp(16px,4vw,40px);justify-items:center;margin:8px 0 12px}
+  .person{display:flex;flex-direction:column;align-items:center}
+  .person .name{font:600 14px/1.1 system-ui,sans-serif;margin-bottom:4px;color:#333;text-shadow:0 1px 2px rgba(0,0,0,.15)}
+  .person .emoji{transform:translateY(0)}
+  .person.akash .emoji{transform:translateY(12px)} /* Akash a bit lower */
+  .ending{margin-top:4px;font-weight:700;letter-spacing:.3px}
+</style>
+
+<div id="password-screen" class="game-block">
+  <h2>🔒 Enter Password</h2>
+  <p>Hint: Your DOB (ddmm)</p>
+  <input type="password" id="password-input" placeholder="Enter password" style="padding:10px 12px;font-size:16px;border-radius:8px;border:1px solid #ccc;margin-right:8px;">
+  <button id="unlock-btn" type="button" class="primary">Unlock</button>
+  <p id="pw-error" style="color:#c62828;display:none;margin-top:8px;">❌ Wrong password, try again!</p>
+</div>
+
+<div id="forest-game" class="game-block" style="display:none;">
+  <canvas id="gameCanvas"></canvas>
+</div>
+
+<!-- Backdrop for modals -->
+<div id="modal-backdrop"></div>
+
+<!-- WIN modal -->
+<div id="question-modal" class="modal">
+  <div class="card">
+    <h2 style="margin-top:0;">You made it out of the forest, Anu! 🌲✨</h2>
+    <p>Will you go on a date with me?</p>
+    <div class="btn-row">
+      <button id="yesBtn" class="primary">💖 Yes</button>
+      <button id="noBtn" class="ghost">No 🙈</button>
+    </div>
+  </div>
+</div>
+
+<!-- FAIL modal -->
+<div id="retry-modal" class="modal">
+  <div class="card">
+    <h2 style="margin-top:0;">Wanna try again? 🙂</h2>
+    <button id="retryBtn" class="primary">Play Again</button>
+  </div>
+</div>
+
+<!-- DINNER modal -->
+<div id="dinner-modal" class="modal">
+  <div class="card">
+    <div class="dinner-scene">
+      <div class="dinner-row">
+        <div class="person akash">
+          <div class="name">Akash</div>
+          <div class="emoji">👨🏻</div>
+        </div>
+        <div class="table">🍽️ 🕯️ 🍽️</div>
+        <div class="person anu">
+          <div class="name">Anu</div>
+          <div class="emoji">👩🏻</div>
+        </div>
+      </div>
+      <p class="ending">Happily ever after ✨</p>
+    </div>
+  </div>
+</div>
+
+<!-- JS -->
+<script defer src="{{ '/js/game.js' | relative_url }}"></script>
