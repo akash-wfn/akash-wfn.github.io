@@ -45,3 +45,4 @@ kramdown:
 collections:
   insights:
     output: true
+    permalink: /resources/insights/:path/
